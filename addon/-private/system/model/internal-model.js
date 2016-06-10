@@ -701,7 +701,7 @@ InternalModel.prototype = {
 
   clearErrorMessages() {
     var record = this.getRecord();
-    get(record, 'errors')._clear();
+    get(record, 'errors')._clear && get(record, 'errors')._clear();
   },
 
   hasErrors() {
