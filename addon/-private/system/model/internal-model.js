@@ -697,7 +697,7 @@ InternalModel.prototype = {
 
   removeErrorMessageFromAttribute(attribute) {
     var record = this.getRecord();
-    get(record, 'errors')._remove(attribute);
+    get(record, 'errors')._remove && get(record, 'errors')._remove(attribute);
   },
 
   clearErrorMessages() {
