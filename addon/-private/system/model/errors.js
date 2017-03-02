@@ -384,7 +384,7 @@ export default Ember.ArrayProxy.extend(Ember.Evented, {
     @private
   */
   _clear() {
-    if (get(this, 'isEmpty')) { return; }
+    if (!this || get(this, 'isEmpty')) { return; }
 
     let errorsByAttributeName = get(this, 'errorsByAttributeName');
     let attributes = Ember.A();
