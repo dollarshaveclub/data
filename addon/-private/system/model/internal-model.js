@@ -861,12 +861,12 @@ export default class InternalModel {
   }
 
   clearErrorMessages() {
-    get(this.getRecord(), 'errors')._clear();
+    const clear = get(this.getRecord(), 'errors')._clear;
+    if (clear) {clear();}
   }
 
   hasErrors() {
     let errors = get(this.getRecord(), 'errors');
-
     return !isEmpty(errors);
   }
 
