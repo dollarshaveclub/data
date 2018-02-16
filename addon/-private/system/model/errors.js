@@ -125,7 +125,7 @@ export default Ember.ArrayProxy.extend(Ember.Evented, {
     @type {Ember.MapWithDefault}
     @private
   */
-  errorsByAttributeName: Ember.computed(function() {
+  errorsByAttributeName: Ember.computed(function () {
     return MapWithDefault.create({
       defaultValue() {
         return Ember.A();
@@ -177,7 +177,7 @@ export default Ember.ArrayProxy.extend(Ember.Evented, {
     @type {Array}
     @private
   */
-  content: Ember.computed(function() {
+  content: Ember.computed(function () {
     return Ember.A();
   }),
 
@@ -387,14 +387,14 @@ export default Ember.ArrayProxy.extend(Ember.Evented, {
     if (!this || get(this, 'isEmpty')) { return; }
 
     let errorsByAttributeName = get(this, 'errorsByAttributeName');
-    let attributes = Ember.A();
+    let attributes = [];
 
-    errorsByAttributeName.forEach(function(_, attribute) {
+    errorsByAttributeName && errorsByAttributeName.forEach(function (_, attribute) {
       attributes.push(attribute);
     });
 
-    errorsByAttributeName.clear();
-    attributes.forEach(function(attribute) {
+    errorsByAttributeName && errorsByAttributeName.clear();
+    attributes && attributes.forEach(function (attribute) {
       this.notifyPropertyChange(attribute);
     }, this);
 
